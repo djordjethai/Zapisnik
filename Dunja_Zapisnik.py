@@ -8,7 +8,7 @@ from io import BytesIO
 import requests
 from pydub import AudioSegment
 
-from myfunc.varvars_dicts import work_prompts, work_vars
+from myfunc.mssql import work_prompts
 mprompts = work_prompts()
 
 # in myfunc.asistenti.py
@@ -122,7 +122,7 @@ def read_local_image():
                     }
 
                     payload = {
-                      "model": work_vars["names"]["openai_model"],
+                      "model": "gpt-4o",
                       "messages": [
                         {
                           "role": "user",
@@ -186,7 +186,7 @@ def read_url_image():
                 with st.spinner("Sačekajte trenutak..."):         
                     
                     response = client.chat.completions.create(
-                      model=work_vars["names"]["openai_model"],
+                      model="gpt-4o",
                       messages=[
                         {
                           "role": "user",
@@ -311,7 +311,7 @@ def generate_corrected_transcript(client, system_prompt, audio_file, jezik):
         st.caption(f"Obradjujem {i + 1}. deo...")
           
         response = client.chat.completions.create(
-            model=work_vars["names"]["openai_model"],
+            model="gpt-4o",
             temperature=0,
             messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": chunk}])
     

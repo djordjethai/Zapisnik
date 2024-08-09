@@ -15,7 +15,7 @@ from langchain_community.document_loaders import UnstructuredFileLoader
 from langchain_openai.chat_models import ChatOpenAI
 from myfunc.asistenti import priprema
 from myfunc.mojafunkcija import initialize_session_state, positive_login, sacuvaj_dokument
-from myfunc.varvars_dicts import work_prompts, work_vars
+from myfunc.mssql import work_prompts
 
 mprompts = work_prompts()
 client=OpenAI()
